@@ -4,6 +4,15 @@ class Vec {
         this.x = x;
         this.y = y;
     }
+    get len()
+    {
+        return Math.sqrt(this.x * this.x + this.y * this.y);
+    }
+    set len(value) {
+        const f = value / this.len;
+        this.x *= f;
+        this.y *= f;
+    }
 }
 
 class Rect {
@@ -46,9 +55,6 @@ class Pong {
     constructor(canvas) {
         this._canvas = canvas;
         this._context = canvas.getContext("2d");
-        this.ball = new Ball();
-        this.lastTime = 0;
-        this.deltaTime = 0;
 
         // Initialize ball in class 
         this.ball = new Ball(); 
