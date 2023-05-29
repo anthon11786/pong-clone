@@ -96,7 +96,11 @@ class Pong {
         if (player.left < ball.right && player.right > ball.left && 
             player.top < ball.bottom && player.bottom > ball.top) {
             // Player is coliding with the ball 
+            const len = ball.vel.len; 
+            ball.vel.y += 300 * (Math.random() - 0.5); 
+
             ball.vel.x = -ball.vel.x; // negate x velocity 
+            ball.vel.len = len * 1.05 // increase speed after each paddle hit
 
         }
     }
@@ -133,6 +137,8 @@ class Pong {
         if (this.ball.vel.x == 0 && this.ball.vel.y == 0){
             this.ball.vel.x = 300 * (Math.random() > .5 ? 1 : -1); 
             this.ball.vel.y = 300 * (Math.random() * 2 - 1 ); 
+
+            this.ball.len = 200; 
         }
 
     }
